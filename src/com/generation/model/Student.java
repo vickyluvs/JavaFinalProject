@@ -24,6 +24,9 @@ public class Student
     public void enrollToCourse( Course course )
     {
         //TODO implement this method
+        if(!isAttendingCourse(course.getCode())){
+            registerApprovedCourse(course);
+        }
     }
 
     public void registerApprovedCourse( Course course )
@@ -35,6 +38,11 @@ public class Student
     public boolean isAttendingCourse( String courseCode )
     {
         //TODO implement this method
+        for(Course course: courses){
+            if(course.getModule().getPrerequisites().containsKey(courseCode)){
+                return true;
+            }
+        }
         return false;
     }
 
